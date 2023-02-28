@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<style>
+body {
+	background: linear-gradient(135deg, #64aedf, rgb(129, 215, 157));
+}
+.container {
+  box-shadow: 0 5px 10px rgba(0,0,0,0.50);
+  width: 25%;
+  padding: 40px;
+  position: absolute;
+  margin-left: 26rem;
+  margin-top: 1rem;
+  align-items: center;
+  border-radius: 12px;
+  border-color:grey;
+  background:white;
+}
+
+
+input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+ 
+  
+  input[type=email], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  }
+  
+  input[type=password], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  
+  }
+  
+button {
+	padding: 20px;
+	font-size: 18px;
+	text-align: center;
+	cursor: pointer;
+	outline: none;
+	color: rgb(16, 11, 11);
+	background: linear-gradient(135deg, #8c9cd6, rgb(73, 200, 62));
+	border: none;
+	border-radius: 15px;
+	width:45%;
+	box-shadow: 0 5px 10px rgb(128, 124, 126);
+  }
+  
+ button:hover {
+	  background: linear-gradient(-135deg, #979be1, rgb(137, 214, 55));
+	  color:white;
+	  }
+  
+ button:active {
+	background-color: grey;
+	
+	transform: translateY(4px);
+	}
+</style>
+</head>
+<body style="background: linear-gradient(135deg, #64aedf, rgb(129, 215, 157));">
+	<div class="container p-4">
+		<div class="row justify-content-md-center">
+			<div class="col-lg-7">
+				<div class="card">
+					<center>
+						<p style='color: green' th:text="${msg}"></p>
+					</center>
+					<div class="card-body">
+						<center><h2 class="card-title text-center">Add New Details</h2></center>
+
+						<!-- General Form Elements -->
+						<form action="#" th:action="@{/saveEmployee}" th:method="POST"
+							th:object="${employee}">
+							<div class="row mb-3">
+								<label class="col-sm-2 col-form-label">SAP Code</label>
+								<div class="col-sm-10">
+									<input type="text" th:field="*{SAPcode}" class="form-control"
+										required>
+								</div>
+							</div>
+							<div class="row mb-3">
+								<label class="col-sm-2 col-form-label">Name</label>
+								<div class="col-sm-10">
+									<input type="text" th:field="*{Name}" class="form-control"
+										required>
+								</div>
+							</div>
+							<div class="row mb-3">
+								<label class="col-sm-2 col-form-label">BAND</label>
+								<div class="col-sm-10">
+									<input type="text" th:field="*{BAND}" class="form-control"
+										required>
+								</div>
+							</div>
+							<div class="row mb-3">
+								<label class="col-sm-2 col-form-label">DOJ</label>
+								<div class="col-sm-10">
+									<input type="text" th:field="*{DOJ}" class="form-control"
+										placeholder="dd-mm-yyyy" required>
+								</div>
+							</div>
+							<div class="row mb-3">
+								<label class="col-sm-2 col-form-label">Location</label>
+								<div class="col-sm-10">
+									<select class="form-select" th:field="*{Location}"
+										aria-label="Default select example" required>
+										<option value="Hyderabad">Hyderabad</option>
+										<option value="Bangalore">Bangalore</option>
+										<option value="Chennai">Chennai</option>
+										<option value="Noida">Noida</option>
+									</select>
+								</div>
+							</div>
+							<div class="row mb-3">
+								<label class="col-sm-2 col-form-label">Role</label>
+								<div class="col-sm-10">
+									<select class="form-select" th:field="*{Role}"
+										aria-label="Default select example" required>
+										<option value="Admin">Admin</option>
+										<option value="Developer">Developer</option>
+										<option value="QA">QA</option>
+										<option value="None">None</option>
+									</select>
+								</div>
+							</div>
+							<div class="row mb-3">
+								<label class="col-sm-2 col-form-label">Email</label>
+								<div class="col-sm-10">
+									<input type="text" th:field="*{email}" class="form-control"
+										required>
+								</div>
+							</div>
+							<div class="row mb-3">
+								<label class="col-sm-2 col-form-label">Phone_Number</label>
+								<div class="col-sm-10">
+									<input type="text" th:field="*{Phone_No}" class="form-control" 
+										 required>
+								</div>
+							</div>
+							<div class="row mb-3">
+								<label class="col-sm-2 col-form-label">PassWord</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" th:field="*{Password}"
+									 required>
+								</div>
+							</div>
+							<div class="row justify-content-md-center">
+								<div class="d-grid gap-2 mt-3">
+									<center><button id="savenewemp" class="btn text-white btnCustom" type="submit" >Save</button><center>
+								</div>
+							</div>
+						</form>
+						<!-- End General Form Elements -->
+						<a th:href="@{/details}">Back</a>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+	<text th:text="${err}"></text>
+</body>
+</html>
+
+
+
+
+
+
