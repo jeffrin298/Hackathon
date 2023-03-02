@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<style>
+body {
+	background-image:url(https://i.pinimg.com/originals/b6/6e/8f/b66e8ffa547746f4085ecc197cd588b9.gif);
+	background-repeat:no-repeat;
+		background-size:50%;
+    background-position-y:100px;
+    background-attachment: fixed;
+}
+.div1{
+  box-shadow: 0 5px 10px rgba(0,0,0,0.50);
+  width: 25%;
+  padding: 40px;
+  position: absolute;
+  margin-left: 700px;
+  margin-top: 1rem;
+  align-items: center;
+  border-radius: 12px;
+  border-color:grey;
+  background: #00CCCC;
+  
+}
+
+
+input[type=text], select {
+  width: 60%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  
+}
+ 
+  
+  input[type=email], select {
+  width: 60%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  
+  }
+  
+  input[type=password], select {
+  width: 60%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+ }
+ 
+ .form-control{
+	 width:60%;
+ }
+  
+
+button {
+  background-color: initial;
+  background-image: linear-gradient(-180deg, #FF7E31, #E62C03);
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Inter,-apple-system,system-ui,Roboto,"Helvetica Neue",Arial,sans-serif;
+  height: 40px;
+  line-height: 40px;
+  outline: 0;
+  overflow: hidden;
+  padding: 0 20px;
+  pointer-events: auto;
+  position: relative;
+  text-align: center;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: top;
+  white-space: nowrap;
+  width: 100%;
+  z-index: 9;
+  border: 0;
+  transition: box-shadow .2s;
+}
+
+button:hover {
+  box-shadow: rgba(253, 76, 0, 0.5) 0 3px 8px;
+}
+
+
+#buttonb {
+  background-color: initial;
+  background-image: linear-gradient(-180deg, rgb(0, 255, 255), rgb(0, 0, 255));
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  display: inline-block;
+  font-family: Inter,-apple-system,system-ui,Roboto,"Helvetica Neue",Arial,sans-serif;
+  height: 40px;
+  line-height: 40px;
+  outline: 0;
+  overflow: hidden;
+  padding: 0 20px;
+  pointer-events: auto;
+  position: relative;
+  text-align: center;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: top;
+  white-space: nowrap;
+  width: 100%;
+  z-index: 9;
+  border: 0;
+  transition: box-shadow .2s;
+}
+
+#buttonb:hover {
+  box-shadow: rgba(0, 0, 128,0.5) 0 3px 8px;
+}
+
+
+</style>
+</head>
+<body >
+	<div class="div1">
+		
+			
+				
+					<center>
+						<p style='color: green' th:text="${msg}"></p>
+					</center>
+					
+						<center><h2 >Add New Details</h2></center>
+
+						<!-- General Form Elements -->
+						<form action="#" th:action="@{/saveEmployee}" th:method="POST"
+							th:object="${employee}">
+							
+								<label >SAP Code : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+								
+									<input type="text" th:field="*{SAPcode}" class="form-control"
+										placeholder="Enter your SAP Code" required><br>
+								
+							
+							
+								<label >Name :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+								
+									<input type="text" th:field="*{Name}" class="form-control"
+										placeholder="Enter your Name" required><br>
+								
+							
+							
+								<label >Band :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+							
+									<input type="text" th:field="*{BAND}" class="form-control"
+										placeholder="Enter your Band" required>
+								<br>
+							
+								<label class="col-sm-2 col-form-label">DOJ :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+								
+									<input type="text" th:field="*{DOJ}" class="form-control"
+										placeholder="dd-mm-yyyy" required><br>
+								
+							
+								<label >Location :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+								
+									<select class="form-select" th:field="*{Location}"
+										aria-label="Default select example" required>
+										<option value="Hyderabad">Hyderabad</option>
+										<option value="Bangalore">Bangalore</option>
+										<option value="Chennai">Chennai</option>
+										<option value="Noida">Noida</option>
+									</select><br>
+								
+							
+								<label >Role :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+								
+									<select class="form-select" th:field="*{Role}"
+										aria-label="Default select example" required>
+										<option value="Admin">Admin</option>
+										<option value="Developer">Developer</option>
+										<option value="QA">QA</option>
+										<option value="None">None</option>
+									</select><br>
+								
+								<label >Email-ID :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+								
+									<input type="text" th:field="*{email}" class="mob"
+										placeholder="Enter your SAP Code" required><br>
+								
+								<label class="mob">Mobile Number :</label>
+								
+									<input type="text" th:field="*{Phone_No}" class="form-control" 
+										 placeholder="Enter your Mob number" required><br>
+								
+								<label class="col-sm-2 col-form-label">Password :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+								
+									<input type="password" class="form-control" th:field="*{Password}"
+									 required><br><br>
+								
+							
+								
+									<center><button  type="submit" >Save</button><br><br><center>
+								
+							
+						</form>
+						<!-- End General Form Elements -->
+						<button type="submit" id="buttonb"><a th:href="@{/details}">Back</a></button>
+				
+
+	</div>
+	<text th:text="${err}"></text>
+</body>
+</html>
+
+
+
+
+
+

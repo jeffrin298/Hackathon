@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+   
+    <title>Task 1</title>
+    <style>
+    
+ body{
+	 background-image:url(https://cdn.dribbble.com/users/68746/screenshots/1443011/homework_dribbble.gif);
+	 background-size: cover;
+	 background-repeat:no-repeat;
+ }
+    
+ .buttonl{
+     margin: 10px;
+  padding: 15px 30px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  border-radius: 10px;
+  display: block;
+  border: 0px;
+  font-weight: 700;
+  box-shadow: 0px 0px 14px -7px #f09819;
+  background-image: linear-gradient(45deg, #FF512F 0%, #F09819  51%, #FF512F  100%);
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  float:right;
+    
+    }
+   
+  .buttonl:hover {
+  background-position: right center;
+  
+  color: #fff;
+  text-decoration: none;
+}
+
+.buttonl:active {
+  transform: scale(0.95);
+}
+
+
+
+
+ .buttonadd{
+     margin: 10px;
+  padding: 15px 30px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  border-radius: 10px;
+  display: block;
+  border: 0px;
+  font-weight: 700;
+  box-shadow: 0px 0px 14px -7px #f09819;
+  background-image: linear-gradient(45deg, #FF512F 0%, #F09819  51%, #FF512F  100%);
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  
+    
+    }
+   
+  .buttonadd:hover {
+  background-position: right center;
+  
+  color: #fff;
+  text-decoration: none;
+}
+
+.buttonadd:active {
+  transform: scale(0.95);
+}
+
+
+
+
+    
+.buttond,.buttonr,.buttona {
+	padding: 15px;
+	font-size: 15px;
+	text-align: center;
+	cursor: pointer;
+	outline: none;
+	
+	border: none;
+	border-radius: 10px;
+	width:90px;
+	box-shadow: 0 5px 10px rgb(192, 192, 192);
+  }
+  
+  .buttonr{
+	  background: linear-gradient(-135deg, rgb(255, 255, 0), rgb(0, 255, 64))
+  }
+  .buttond {
+	  background: linear-gradient(-135deg, rgb(255, 0, 0), rgb(255, 128, 0));
+	
+	  }
+  
+  .buttona {
+	 background: linear-gradient(-135deg, rgb(0, 0, 255), rgb(128, 128, 192)) ;
+  
+  transform: translateY(4px);
+	}
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+  background-color: rgb(128, 128, 128);
+  color: white;
+}
+tr:hover {background-color:rgba(124, 193, 219, 0.93);
+}
+  @media only screen and (max-width: 400px) {
+    td, th {
+      display: block;
+      width: 100%;
+      text-align: left;
+    }
+    td:not(:first-child),
+    th:not(:first-child) {
+      margin: auto;
+    }
+  }
+  </style>
+    
+</head>
+<body >
+
+<section class="ftco-section">
+	
+			<div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-5">
+					<h2 class="heading-section" align="center" style="font-size:30px;"><b>USER DETAILS</b></h2>
+				</div>
+			</div>
+			<a th:href="@{/logout}"  ><button class="buttonl">Logout</button></a>
+			<br><a th:href="@{/showForm}" style="text-decoration:none;"><button class="buttonadd">Add</button></a></br>
+			<div align="center">
+			<br>
+						<table class="table table-striped"  
+							style="table-layout: fixed;
+  							width: 1200px; background: #fff; border-radius: 5px;
+  							 box-shadow: 0 5px 10px rgb(64, 0, 64);">
+							 <thead>
+        
+  							<tr>
+    							<th>Sap Code</th>
+								<th>Name</th>
+								<th>Band</th>
+								<th>DOJ</th>
+								<th>Location</th>
+								<th>Role</th>
+								<th>Email</th>
+								<th>Phone Number</th>
+								<th colspan="3">Actions</th>
+							</tr>
+           			 </thead>
+        			<tbody align="center">
+        			<tr th:each="employee : ${listEmployees}">
+            
+            				<td th:text="${employee.SAPcode}"></td>
+            				<td th:text="${employee.Name}"></td>
+            				<td th:text="${employee.BAND}"></td>
+            				<td th:text="${employee.DOJ}"></td>
+            				<td th:text="${employee.Location}"></td>
+            				<td th:text="${employee.Role}"></td>
+            				<td th:text="${employee.email}"></td>
+            				<td th:text="${employee.Phone_No}"></td>  
+            <!--td>
+            <a class="btn btn-danger" th:if="${manager_block} != 'true' "
+               th:href="@{/deleteEmployee/{id}(id=${employee.id})}">Delete</a>
+            <a class="btn btn-warning"  th:href="@{/updateEmployee/{id}(id=${employee.id})}" >Update</a></td-->
+                           <td>
+                                <!--a href=""><button class="button">Revoke</button></a>
+	    						<a href=""><button class="button">Allocate</button></a-->
+								<a th:href="@{/deleteByID/{id}(id=${employee.id})}"><button class="buttond" onclick="prompt()">Drop</button></a></td>
+								<td>
+								<a th:href="@{/revoke/{id}(id=${employee.id})}"><button class="buttonr" onclick="prompt1()">Revoke</button></a></td>
+	
+							</td>
+							<td>
+								<a th:href="@{/update/update/{id}(id=${employee.id})}"><button class="buttona">Allocate</button></a></td>
+	
+							</td>
+        			</tr>
+        		</tbody>
+      </table>
+   </div>		
+  </section> 
+  <br></br>
+</div>
+<text th:text="${err}"></text>
+
+<script>
+function prompt(){
+	alert("Deleting the user");
+}
+function prompt1(){
+	alert("Do you want to revoke role?");
+}
+
+</script>
+
+
+
+</body>
+</html>
+
+
+

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+
+
+<script src="login.js"></script>
+
+<style>
+ body {
+background-image:url(https://1.bp.blogspot.com/-IdNNT8WUai4/XqHDaDhZw7I/AAAAAAAAH1I/CCF4jbsC9C0nxj_9FuHAe2YvFoGkCIhnQCLcBGAsYHQ/s1600/gif%2Bjob.gif);
+
+background-repeat:no-repeat;
+height:50%;
+width:50%;
+
+
+
+}
+.container {
+  box-shadow: 0 5px 10px rgba(0,0,0,0.50);
+  width: 30%;
+  padding: 10px;
+  position: absolute;
+  margin-left: 700px;
+  margin-top: 1rem;
+  align-items: center;
+  border-radius: 12px;
+  border-color:grey;
+  background: linear-gradient(132deg, rgb(251, 251, 255) 0.00%, rgb(215, 223, 252) 100.00%);
+  font-family:'Calibri';
+}
+
+
+input[type=text], select {
+  width: 60%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+ 
+  
+  input[type=email], select {
+  width: 60%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  }
+  
+  input[type=password], select {
+  width: 60%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  
+  }
+  
+
+button {
+  appearance: none;
+  background-color: #FFFFFF;
+  border-radius: 30em;
+  border-style: none;
+  box-shadow: #ADCFFF 0 -12px 6px inset;
+  box-sizing: border-box;
+  color: #000000;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system,sans-serif;
+  font-size: 1.0rem;
+  font-weight: 500;
+  letter-spacing: -.24px;
+  margin: 0;
+  outline: none;
+  padding: 1rem 1.3rem;
+  quotes: auto;
+  text-align: center;
+  text-decoration: none;
+  transition: all .15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  margin-top:60px;
+  margin-left:220px;
+   font-size: 1.5rem;
+    padding: .40rem 1.5rem;
+}
+
+button:hover {
+  background-color:rgb(85,218,184);
+  box-shadow: rgb(0, 255, 0) 0 -6px 8px inset;
+  transform: scale(1.125);
+}
+
+button:active {
+  transform: scale(1.025);
+}
+
+@media (min-width: 768px) {
+	 
+}
+
+ h2 {
+  text-align: center;
+  text-transform: uppercase;
+  padding-bottom: 5px;
+  font-family: "Raleway", sans-serif;
+  font-weight: 200;
+  font-size: 30px;
+}
+ h2:before {
+  width: 28px;
+  height: 5px;
+  display: block;
+  content: "";
+  position: absolute;
+  bottom: 445px;
+  left: 30%;
+  margin-left: 75px;
+  background-color: #b80000;
+}
+ h2:after {
+  width: 100px;
+  height: 1px;
+  display: block;
+  content: "";
+  position: relative;
+  margin-top: 15px;
+  left: 50%;
+  margin-left: -45px;
+  background-color: #b80000;
+}
+
+
+#check{
+	margin-left:50px;
+}
+
+
+
+
+
+
+
+
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+<form action="#" th:action="@{/login/}" th:object="${user}"
+            method="post" >
+<div class="container">
+<center>
+<header><h2 class="one"><b>LOGIN FORM</b></h2></header></center>
+<label for="uname"><b>Username:</b></label>
+<input type="text" style="height:50px;"class="form-control" th:field="*{Email}"
+                        placeholder="Enter Your Email ID" required/><br><br>
+<label for="password"><b>Password:</b></label>
+<input type="password" class="form-control" th:field="*{Password}"
+                        placeholder="Password" style="height:50px;" id="password" required minlength="6" maxlength="10"/><br>
+<input type="checkbox" onclick="mypassword()" id ="check"/>Show Password <br><br>
+<label for="Role" ><b>Role:</b></label>
+ <select class="form-select" aria-label="Default select example"  th:field="*{Role}" id="Role">
+        
+          <option th:value="admin">Admin</option>
+          <option th:value="Developer">Developer</option>
+          <option th:value="QA">QA</option>
+ 
+        
+  </select> 
+   <br><br>
+  <button type="submit">Login</button></form>
+  <br></br>
+   <text th:text="${err}" align="center"></text>
+ 
+</div>
+
+
+<script>
+function mypassword() {
+        var x = document.getElementById("password");
+        if (x.type === "password") {
+          x.type = "text";
+        } else {
+          x.type = "password";
+        }
+      }
+</script>
+
+</body>
+</html>

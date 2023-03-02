@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+<style>
+body {
+	
+	background-image:url(https://cdn.dribbble.com/users/76502/screenshots/5251755/jet_animation.gif);
+    background-repeat:no-repeat;
+   
+}
+.container {
+  box-shadow: 0 5px 10px rgba(0,0,0,0.50);
+  width: 25%;
+  padding: 40px;
+  position: absolute;
+  margin-left: 50rem;
+  margin-top: 5rem;
+  align-items: center;
+  border-radius: 12px;
+  border-color:grey;
+  background: linear-gradient(132deg, rgb(251, 251, 255) 0.00%, rgb(215, 223, 252) 100.00%);
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+
+input[type=text], select {
+  width: 85%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+ 
+  
+  input[type=email], select {
+  width: 85%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+ 
+  }
+  
+  input[type=password], select {
+  width: 85%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  
+  }
+  
+button {
+	
+	padding: 20px;
+	font-size: 18px;
+	text-align: center;
+	margin-top:15px;
+	cursor: pointer;
+	outline: none;
+	color: rgb(16, 11, 11);
+	background: linear-gradient(135deg, rgb(128, 128, 255), rgb(128, 255, 255));
+	border: none;
+	border-radius: 15px;
+	width:35%;
+	box-shadow: 0 5px 10px rgb(128, 124, 126);
+	
+	
+  }
+  
+ button:hover {
+	  background: linear-gradient(-135deg, rgb(0, 128, 0), rgb(0, 128, 192));
+	  color:white;
+	  }
+  
+ button:active {
+	background-color: grey;
+	
+	transform: translateY(4px);
+	}
+</style>
+</head>
+
+<body style="height:610px">
+<div class="container " >
+    <div class="row justify-content-md-center">
+        <div class="col-lg-7">
+            <div class="card">
+                
+<center><p style='color:green' th:text="${msg}"></p></center>
+                <div class="card-body">
+                    <center><h2 class="card-title text-center">Allocate New Role</h2></center>
+
+                    <!-- General Form Elements -->
+                    <form action="#" th:action="@{/update/{id}(id=${employee.id})}" th:object="${employee}"
+                          method="POST" onclick="displayMessage();">
+                        <div class="row mb-3">
+                            <label>SAP_Code </label>
+                            <div class="col-sm-10">
+                                <input type="text" th:field="*{SAPcode}" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label class="col-sm-2 col-form-label">Name :</label>
+                            <div class="col-sm-10">
+                                <input type="text" th:field="*{Name}" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label class="col-sm-2 col-form-label">Role :</label>
+                            <div class="col-sm-10">
+                                <select class="form-select" th:field="*{Role}" aria-label="Default select example" required>
+                                    <option value="Admin">Admin</option>
+                                    <option value="Developer">Developer</option>
+                                    <option value="QA">QA</option>
+                                </select>
+                            </div>
+                        </div>
+                       <center>
+                        <button type="submit">Save</button></center>
+                    </form><!-- End General Form Elements -->
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<text th:text="${err}"></text>
+</body>
+</html>
